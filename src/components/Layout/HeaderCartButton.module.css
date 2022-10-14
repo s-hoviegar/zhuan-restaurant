@@ -1,0 +1,70 @@
+.float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  background-color: #344E41;
+  width: fit-content;
+  gap: 10px;
+  padding: 5px;
+  justify-content: center;
+  z-index: 10;
+}
+
+.my-float {
+  width: 50%;
+}
+
+.float:hover,
+.float:active {
+  background-color: #588157;
+}
+
+.icon {
+  color: white;
+  width: 24px;
+  height: 24px;
+}
+
+.badge {
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 3px 2px 3px 2px;
+  width: 50%;
+  background-color: #DAD7CD;
+  text-align: center;
+}
+
+.float:hover .badge,
+.float:active .badge {
+  background-color: #3A5A40;
+  color: white;
+}
+
+.bump {
+  animation: bump 300ms ease-out;
+}
+
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+
+  10% {
+    transform: scale(0.9);
+  }
+
+  30% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
