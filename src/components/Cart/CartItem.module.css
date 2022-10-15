@@ -2,14 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #068a1c;
+  border-bottom: 2px solid #3a5a40;
   padding: 1rem 0;
   margin: 1rem 0;
 }
 
 .cart-item h2 {
   margin: 0 0 0.5rem 0;
-  color: #363636;
+  color: #000;
 }
 
 .summary {
@@ -21,7 +21,7 @@
 
 .price {
   font-weight: bold;
-  color: #068a1c;
+  color: #3a5a40;
 }
 
 .amount {
@@ -29,7 +29,7 @@
   border: 1px solid #ccc;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
-  color: #363636;
+  color: #3a5a40;
 }
 
 .actions {
@@ -47,8 +47,8 @@
   font: inherit;
   font-weight: bold;
   font-size: 1.25rem;
-  color: #068a1c;
-  border: 1px solid #068a1c;
+  color: #3a5a40;
+  border: 1px solid #3a5a40;
   width: 3rem;
   text-align: center;
   border-radius: 6px;
@@ -60,6 +60,6 @@
 
 .cart-item button:hover,
 .cart-item button:active {
-  background-color: #046113;
+  background-color: #3a5a40;
   color: white;
 }
