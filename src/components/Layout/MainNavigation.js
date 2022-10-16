@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import AuthContext from "../../store/auth-context";
 import classes from "./MainNavigation.module.css";
-import logo from "../../assets/persian_logo_svg_color.png";
 import Logo from "./Logo";
 
 const MainNavigation = () => {
