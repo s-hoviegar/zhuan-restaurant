@@ -21,6 +21,9 @@ const StartingPageContent = () => {
     <>
       {
         <Modal show={showCart} onHide={hideCartModal} centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Your order list</Modal.Title>
+          </Modal.Header>
           <Cart onClose={hideCartModal} />
         </Modal>
       }

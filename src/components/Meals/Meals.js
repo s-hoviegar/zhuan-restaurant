@@ -21,6 +21,7 @@ import classes from "./Meals.module.css";
 
 const Meals = () => {
   const [meals, setMeals] = useState([]);
+  const [mealsChanged, setMealsChanged] = useState(false);
   const [mealCategory, setMealCategory] = useState("All");
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
@@ -77,6 +78,22 @@ const Meals = () => {
         setHttpError(error.message);
       });
   }, []);
+
+  const mealsClasses = `${classes.meals} ${
+    mealsChanged ? classes.mealsAppear : ""
+  }`;
+
+  useEffect(() => {
+    setMealsChanged(true);
+
+    const timer = setTimeout(() => {
+      setMealsChanged(false);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [mealCategory]);
 
   if (httpError) {
     return (
@@ -194,7 +211,7 @@ const Meals = () => {
   return (
     <>
       <MealCategories changeCategory={onChangeMealCategoryHandler} />
-      <section className={classes.meals}>
+      <section className={mealsClasses}>
         <Modal show={showItemModal} onHide={onCloseModal} centered>
           <Modal.Header closeButton>
             <Modal.Title>

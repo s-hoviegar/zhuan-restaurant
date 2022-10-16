@@ -4,6 +4,7 @@ import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import CartContext from "../../store/cart-context";
 import Checkout from "./Checkout";
+import Button from "react-bootstrap/Button";
 
 const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
@@ -57,30 +58,45 @@ const Cart = (props) => {
 
   const modalActions = (
     <div className={classes.actions}>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
+      <Button variant="outline-dark" onClick={props.onClose}>
         Close
-      </button>
-      {hasItems && (
-        <button className={classes.button} onClick={orderHandler}>
-          Order
-        </button>
-      )}
+      </Button>
+      <Button variant="dark" onClick={orderHandler}>
+        Order
+      </Button>
     </div>
   );
 
-  const cartModalContent = (
-    <React.Fragment>
-      {cartItems}
-      <div className={classes.total}>
-        <span>Total Amount</span>
-        <span>{totalAmount}</span>
-      </div>
-      {isCheckout && (
-        <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
-      )}
-      {!isCheckout && modalActions}
-    </React.Fragment>
-  );
+  let cartModalContent = null;
+  if (!hasItems) {
+    cartModalContent = (
+      <>
+        <p>
+          There is no items in your order list. Try adding some items to see
+          them here!
+        </p>
+        <div className={classes.actions}>
+          <Button variant="dark" onClick={props.onClose}>
+            Ok
+          </Button>
+        </div>
+      </>
+    );
+  } else {
+    cartModalContent = (
+      <React.Fragment>
+        {cartItems}
+        <div className={classes.total}>
+          <span>Total Amount</span>
+          <span>{totalAmount}</span>
+        </div>
+        {isCheckout && (
+          <Checkout onConfirm={submitOrderHandler} onCancel={props.onClose} />
+        )}
+        {!isCheckout && modalActions}
+      </React.Fragment>
+    );
+  }
 
   const isSubmittingModalContent = <p>Sending order data...</p>;
 
