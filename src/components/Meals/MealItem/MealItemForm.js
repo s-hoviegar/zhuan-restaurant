@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-
+import { FormattedMessage } from "react-intl";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -24,7 +24,7 @@ const MealItemForm = (props) => {
       priceInputRef.current.value = props.editingItem.price;
       categoryInputRef.current.value = props.editingItem.category;
     }
-  }, []);
+  }, [props.editingItem]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -73,83 +73,199 @@ const MealItemForm = (props) => {
 
   return (
     <Form>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Meal name</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter a name for the new meal item."
-          ref={nameInputRef}
-          autoFocus
-        />
+      <Form.Group className="mb-3" controlId="itemForm.ControlInput1">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealName"
+            defaultMessage="Meal name"
+          />
+        </Form.Label>
+        <FormattedMessage
+          id="mealItemForm.mealNamePlaceHolder"
+          defaultMessage="Enter a name for the new meal item."
+        >
+          {(msg) => (
+            <Form.Control
+              type="text"
+              placeholder={msg}
+              ref={nameInputRef}
+              autoFocus
+            />
+          )}
+        </FormattedMessage>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Description</Form.Label>
+      <Form.Group className="mb-3" controlId="itemForm.ControlTextarea1">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealDescription"
+            defaultMessage="Description"
+          />
+        </Form.Label>
         <Form.Control as="textarea" rows={3} ref={descriptionInputRef} />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-        <Form.Label>Meal image</Form.Label>
+      <Form.Group className="mb-3" controlId="itemForm.ControlInput2">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealImg"
+            defaultMessage="Meal image"
+          />
+        </Form.Label>
 
         <InputGroup className="mb-3">
           <InputGroup.Text id="meal-item-image-link">
             <MdAddLink size={25} />
           </InputGroup.Text>
-          <Form.Control
-            placeholder="Enter the URL of the image."
-            aria-label="Enter the URL of the image."
-            aria-describedby="meal-item-image-link"
-            ref={imgInputRef}
-          />
+          <FormattedMessage
+            id="mealItemForm.mealImgPlaceHolder"
+            defaultMessage="Enter the URL of the image."
+          >
+            {(msg) => (
+              <Form.Control
+                placeholder={msg}
+                aria-label={msg}
+                aria-describedby="meal-item-image-link"
+                ref={imgInputRef}
+              />
+            )}
+          </FormattedMessage>
         </InputGroup>
       </Form.Group>
 
       <InputGroup className="mb-3">
-        <DropdownButton
-          variant="outline-secondary"
-          title="Category"
-          id="input-group-dropdown-1"
+        <FormattedMessage
+          id="mealItemForm.mealCategory"
+          defaultMessage="Category"
         >
-          <Dropdown.Item name="Main Course" onClick={addCategoryHandler}>
-            Main Course
-          </Dropdown.Item>
-          <Dropdown.Item name="Appetizer" onClick={addCategoryHandler}>
-            Appetizer
-          </Dropdown.Item>
-          <Dropdown.Item name="Breakfast" onClick={addCategoryHandler}>
-            Breakfast
-          </Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item name="Hot Drink" onClick={addCategoryHandler}>
-            Hot Drink
-          </Dropdown.Item>
-          <Dropdown.Item name="Cold Drink" onClick={addCategoryHandler}>
-            Cold Drink
-          </Dropdown.Item>
-        </DropdownButton>
-        <Form.Control
-          aria-label="Add or remove food categories"
-          ref={categoryInputRef}
-          disabled
-        />
+          {(msg) => (
+            <DropdownButton
+              variant="outline-secondary"
+              title={msg}
+              id="input-group-dropdown-1"
+            >
+              <FormattedMessage
+                id="mealItemForm.mealCategoryMainCourse"
+                defaultMessage="Main Course"
+              >
+                {(msg) => (
+                  <Dropdown.Item
+                    id="mainCourse"
+                    name={msg}
+                    onClick={addCategoryHandler}
+                  >
+                    {msg}
+                  </Dropdown.Item>
+                )}
+              </FormattedMessage>
+              <FormattedMessage
+                id="mealItemForm.mealCategoryAppetizer"
+                defaultMessage="Appetizer"
+              >
+                {(msg) => (
+                  <Dropdown.Item
+                    id="appetizer"
+                    name={msg}
+                    onClick={addCategoryHandler}
+                  >
+                    {msg}
+                  </Dropdown.Item>
+                )}
+              </FormattedMessage>
+              <FormattedMessage
+                id="mealItemForm.mealCategoryBreakfast"
+                defaultMessage="Breakfast"
+              >
+                {(msg) => (
+                  <Dropdown.Item
+                    id="breakfast"
+                    name={msg}
+                    onClick={addCategoryHandler}
+                  >
+                    {msg}
+                  </Dropdown.Item>
+                )}
+              </FormattedMessage>
+              <Dropdown.Divider />
+              <FormattedMessage
+                id="mealItemForm.mealCategoryHotDrinks"
+                defaultMessage="Hot Drinks"
+              >
+                {(msg) => (
+                  <Dropdown.Item
+                    id="hotDrinks"
+                    name={msg}
+                    onClick={addCategoryHandler}
+                  >
+                    {msg}
+                  </Dropdown.Item>
+                )}
+              </FormattedMessage>
+              <FormattedMessage
+                id="mealItemForm.mealCategoryColdDrinks"
+                defaultMessage="Cold Drinks"
+              >
+                {(msg) => (
+                  <Dropdown.Item
+                    id="coldDrinks"
+                    name={msg}
+                    onClick={addCategoryHandler}
+                  >
+                    {msg}
+                  </Dropdown.Item>
+                )}
+              </FormattedMessage>
+            </DropdownButton>
+          )}
+        </FormattedMessage>
+        <FormattedMessage
+          id="mealItemForm.mealCategoryPlaceholder"
+          defaultMessage="Add or remove food categories"
+        >
+          {(msg) => (
+            <Form.Control aria-label={msg} ref={categoryInputRef} disabled />
+          )}
+        </FormattedMessage>
       </InputGroup>
 
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-        <Form.Label>Meal Price</Form.Label>
+      <Form.Group className="mb-3" controlId="itemForm.price">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealPrice"
+            defaultMessage="Meal price"
+          />
+        </Form.Label>
         <InputGroup className="mb-3">
           <InputGroup.Text id="meal-item-price">
             <MdOutlinePriceChange size={25} />
           </InputGroup.Text>
-          <Form.Control
-            type="number"
-            placeholder="Meal Price"
-            aria-label="Price"
-            aria-describedby="Enter the Price of the meal."
-            ref={priceInputRef}
-          />
+          <FormattedMessage
+            id="mealItemForm.mealPricePlaceholder"
+            defaultMessage="Enter meal price."
+          >
+            {(msg) => (
+              <Form.Control
+                type="number"
+                placeholder={msg}
+                aria-label={msg}
+                aria-describedby={msg}
+                ref={priceInputRef}
+              />
+            )}
+          </FormattedMessage>
         </InputGroup>
       </Form.Group>
       <div className="d-grid gap-2">
         <Button variant="outline-primary" size="lg" onClick={submitHandler}>
-          {props.editingItem !== null ? "Edit item" : "Add item"}
+          {props.editingItem !== null ? (
+            <FormattedMessage
+              id="mealItemForm.editBtn"
+              defaultMessage="Edit item"
+            />
+          ) : (
+            <FormattedMessage
+              id="mealItemForm.addBtn"
+              defaultMessage="Add item"
+            />
+          )}
         </Button>
       </div>
     </Form>

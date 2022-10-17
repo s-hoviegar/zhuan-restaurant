@@ -1,6 +1,7 @@
 import { useRef, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { updatePassword, sendEmailVerification } from "firebase/auth";
+import { FormattedMessage } from "react-intl";
 
 import AuthContext from "../../store/auth-context";
 import classes from "./ProfileForm.module.css";
@@ -63,7 +64,12 @@ const ProfileForm = () => {
       {!!isVerified && (
         <form className={classes.form} onSubmit={submitHandler}>
           <div className={classes.control}>
-            <label htmlFor="new-password">New Password</label>
+            <label htmlFor="new-password">
+              <FormattedMessage
+                id="profileForm.newPassword"
+                defaultMessage="New Password"
+              />
+            </label>
             <input
               type="password"
               id="new-password"
@@ -72,15 +78,28 @@ const ProfileForm = () => {
             />
           </div>
           <div className={classes.action}>
-            <button>Change Password</button>
+            <button>
+              <FormattedMessage
+                id="profileForm.changePassword"
+                defaultMessage="Change Password"
+              />
+            </button>
           </div>
         </form>
       )}
       {!!!isVerified && (
         <div className={classes.action}>
-          <p>Please verify you email address to change your profile.</p>
+          <p>
+            <FormattedMessage
+              id="profileForm.plsVerify"
+              defaultMessage="Please verify you email address to change your profile."
+            />
+          </p>
           <button onClick={sendEmailVerificationLink}>
-            Send email verification link.
+            <FormattedMessage
+              id="profileForm.sendEmailVerificationLink"
+              defaultMessage="Send email verification link."
+            />
           </button>
         </div>
       )}

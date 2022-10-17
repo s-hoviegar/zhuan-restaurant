@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { ref, child, get } from "firebase/database";
+import { FormattedMessage } from "react-intl";
 
 import AuthContext from "../../store/auth-context";
 import firebaseAuth from "../../utils/firebase-auth";
@@ -126,6 +127,8 @@ const AuthForm = () => {
           // ...
         })
         .catch((error) => {
+          setIsLoading(false);
+
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(error);
@@ -137,14 +140,27 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+      <h1>
+        {isLogin ? (
+          <FormattedMessage id="authForm.login" defaultMessage="Login" />
+        ) : (
+          <FormattedMessage id="authForm.signup" defaultMessage="Sign Up" />
+        )}
+      </h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="email">Your Email</label>
+          <label htmlFor="email">
+            <FormattedMessage id="authForm.email" defaultMessage="Email" />
+          </label>
           <input type="email" id="email" required ref={emailInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="password">Your Password</label>
+          <label htmlFor="password">
+            <FormattedMessage
+              id="authForm.password"
+              defaultMessage="Password"
+            />
+          </label>
           <input
             type="password"
             id="password"
@@ -153,16 +169,31 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.actions}>
-          {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
-          )}
-          {isLoading && <p>Sending request...</p>}
+          <button disabled={isLoading}>
+            {isLoading && `Sending request...`}
+            {!isLoading && isLogin && (
+              <FormattedMessage id="authForm.login" defaultMessage="Login" />
+            )}
+            {!isLoading && !isLogin && (
+              <FormattedMessage id="authForm.signup" defaultMessage="Sign Up" />
+            )}
+          </button>
           <button
             type="button"
             className={classes.toggle}
             onClick={switchAuthModeHandler}
           >
-            {isLogin ? "Create new account" : "Login with existing account"}
+            {isLogin ? (
+              <FormattedMessage
+                id="authForm.creatNewAccount"
+                defaultMessage="Create new account"
+              />
+            ) : (
+              <FormattedMessage
+                id="authForm.loginWithExistingAccount"
+                defaultMessage="Login with existing account"
+              />
+            )}
           </button>
         </div>
       </form>

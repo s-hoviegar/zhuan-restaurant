@@ -5,6 +5,7 @@ import Badge from "react-bootstrap/Badge";
 import { RiAddBoxFill } from "react-icons/ri";
 import { RiEditBoxFill } from "react-icons/ri";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { FormattedMessage } from "react-intl";
 
 import CartContext from "../../../store/cart-context";
 import AuthContext from "../../../store/auth-context";
@@ -59,7 +60,11 @@ const MealItem = (props) => {
 
         <h6>
           <Button variant="success" size="sm" onClick={addToCartHandler}>
-            <RiAddBoxFill /> Add to order list
+            <RiAddBoxFill />{" "}
+            <FormattedMessage
+              id="mealItem.addToOrderlist"
+              defaultMessage="Add to order list"
+            />
           </Button>
         </h6>
         {authCtx.isLoggedIn && authCtx.isAdmin && authCtx.isVerified && (

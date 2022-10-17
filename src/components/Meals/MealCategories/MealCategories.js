@@ -1,4 +1,6 @@
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { useIntl } from "react-intl";
+
 import classes from "./MealCategories.module.css";
 
 const images = require.context("../../../assets", true);
@@ -6,37 +8,34 @@ const images = require.context("../../../assets", true);
 const MEAL_CATEGORIES = [
   {
     id: "All",
-    img_en: "All_en.jpg",
-    img_fa: "All_fa.jpg",
+    img: "All",
   },
   {
     id: "Main Course",
-    img_en: "Main_Course_en.jpg",
-    img_fa: "Main_Course_fa.jpg",
+    img: "Main_Course",
   },
   {
     id: "Appetizer",
-    img_en: "Appetizer_en.jpg",
-    img_fa: "Appetizer_fa.jpg",
+    img: "Appetizer",
   },
   {
     id: "Breakfast",
-    img_en: "Breakfast_en.jpg",
-    img_fa: "Breakfast_fa.jpg",
+    img: "Breakfast",
   },
   {
-    id: "Cold Drink",
-    img_en: "Cold_Drinks_en.jpg",
-    img_fa: "Cold_Drinks_fa.jpg",
+    id: "Cold Drinks",
+    img: "Cold_Drinks",
   },
   {
-    id: "Hot Drink",
-    img_en: "Hot_Drinks_en.jpg",
-    img_fa: "Hot_Drinks_fa.jpg",
+    id: "Hot Drinks",
+    img: "Hot_Drinks",
   },
 ];
 
 const MealCategories = (props) => {
+  const intl = useIntl();
+  // console.log(intl.locale);
+
   // const [mealCategories, setMealCategories] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
 
@@ -63,7 +62,7 @@ const MealCategories = (props) => {
           <img
             key={item.id}
             className={classes.pic}
-            src={images(`./${item.img_en}`).default}
+            src={images(`./${item.img}_${intl.locale}.jpg`).default}
             alt={item.id}
             onClick={onChangeCategoryHandler}
           />

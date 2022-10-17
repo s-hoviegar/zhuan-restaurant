@@ -5,7 +5,7 @@
 }
 
 .mealsAppear {
-  animation: meals-appear 1s ease-out forwards;
+  animation: meals-appear 500ms ease-out forwards;
 }
 
 .MealsLoading {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ref, child, update, get, remove } from "firebase/database";
-
+import { FormattedMessage } from "react-intl";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -88,7 +88,7 @@ const Meals = () => {
 
     const timer = setTimeout(() => {
       setMealsChanged(false);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearTimeout(timer);
@@ -215,7 +215,12 @@ const Meals = () => {
         <Modal show={showItemModal} onHide={onCloseModal} centered>
           <Modal.Header closeButton>
             <Modal.Title>
-              {editingItem !== null ? "Edit" : "Add new"} meal item
+              {editingItem !== null ? (
+                <FormattedMessage id="meals.edit" defaultMessage="Edit" />
+              ) : (
+                <FormattedMessage id="meals.add" defaultMessage="Add" />
+              )}{" "}
+              <FormattedMessage id="meals.item" defaultMessage="item" />
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -234,11 +239,21 @@ const Meals = () => {
           centered
         >
           <Modal.Header closeButton>
-            <Modal.Title>Remove item</Modal.Title>
+            <Modal.Title>
+              <FormattedMessage
+                id="meals.remove"
+                defaultMessage="Remove item"
+              />
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <center>
-              <p>Are you sure you want to delete this item?</p>
+              <p>
+                <FormattedMessage
+                  id="meals.removePrompt"
+                  defaultMessage="Are you sure you want to delete this item?"
+                />
+              </p>
             </center>
             <Container>
               <Row>
@@ -249,7 +264,10 @@ const Meals = () => {
                       size="lg"
                       onClick={onDeleteItemHandler}
                     >
-                      Delete item
+                      <FormattedMessage
+                        id="meals.delete"
+                        defaultMessage="Delete item"
+                      />
                     </Button>
                   </div>
                 </Col>
@@ -260,7 +278,10 @@ const Meals = () => {
                       size="lg"
                       onClick={onCloseRemoveItemModal}
                     >
-                      Cancel
+                      <FormattedMessage
+                        id="meals.cancelDelete"
+                        defaultMessage="Cancel"
+                      />
                     </Button>
                   </div>
                 </Col>
@@ -281,8 +302,15 @@ const Meals = () => {
                         width: "100%",
                       }}
                     />
-                    <Card.Title>Add</Card.Title>
-                    <Card.Text>Add a new item!</Card.Text>
+                    <Card.Title>
+                      <FormattedMessage id="meals.add" defaultMessage="Add" />
+                    </Card.Title>
+                    <Card.Text>
+                      <FormattedMessage
+                        id="meals.addText"
+                        defaultMessage="Add a new item!"
+                      />
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </div>

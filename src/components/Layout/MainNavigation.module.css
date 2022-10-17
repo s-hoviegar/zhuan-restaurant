@@ -45,6 +45,13 @@
   cursor: pointer;
 }
 
+.header select {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+}
+
 .header a:hover {
   color: #588157;
 }
@@ -52,4 +59,14 @@
 .header button:hover {
   background-color: #588157;
   color: #3A5A40;
+}
+
+.header select:hover {
+  background-color: white;
+  color: #3A5A40;
+}
+
+.header select option {
+  background-color: transparent;
+  color: black;
 }
