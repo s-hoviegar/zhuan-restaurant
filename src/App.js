@@ -15,6 +15,8 @@ function App() {
   const intl = useIntl();
   if (intl.locale === "fa") {
     document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
+  } else {
+    document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");
   }
 
   return (
