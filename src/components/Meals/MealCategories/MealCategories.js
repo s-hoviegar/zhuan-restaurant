@@ -7,28 +7,28 @@ const images = require.context("../../../assets", true);
 
 const MEAL_CATEGORIES = [
   {
-    id: "All",
+    id: "all",
     img: "All",
   },
   {
-    id: "Main Course",
+    id: "mainCourse",
     img: "Main_Course",
   },
   {
-    id: "Appetizer",
+    id: "appetizer",
     img: "Appetizer",
   },
   {
-    id: "Breakfast",
+    id: "breakfast",
     img: "Breakfast",
   },
   {
-    id: "Cold Drinks",
-    img: "Cold_Drinks",
+    id: "hotDrinks",
+    img: "Hot_Drinks",
   },
   {
-    id: "Hot Drinks",
-    img: "Hot_Drinks",
+    id: "coldDrinks",
+    img: "Cold_Drinks",
   },
 ];
 
@@ -54,9 +54,17 @@ const MealCategories = (props) => {
     props.changeCategory(event.target.alt);
   };
 
+  const leftBtn = (
+    <MdChevronLeft className={classes.icons} onClick={slideLeft} size={40} />
+  );
+  const rightBtn = (
+    <MdChevronRight className={classes.icons} onClick={slideRight} size={40} />
+  );
+
   return (
     <div className={classes.container}>
-      <MdChevronLeft className={classes.icons} onClick={slideLeft} size={40} />
+      {intl.locale === "en" ? leftBtn : rightBtn}
+
       <div id="slider" className={classes.item}>
         {MEAL_CATEGORIES.map((item) => (
           <img
@@ -68,11 +76,8 @@ const MealCategories = (props) => {
           />
         ))}
       </div>
-      <MdChevronRight
-        className={classes.icons}
-        onClick={slideRight}
-        size={40}
-      />
+
+      {intl.locale === "fa" ? leftBtn : rightBtn}
     </div>
   );
 };

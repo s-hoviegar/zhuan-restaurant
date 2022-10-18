@@ -22,7 +22,7 @@ import classes from "./Meals.module.css";
 const Meals = () => {
   const [meals, setMeals] = useState([]);
   const [mealsChanged, setMealsChanged] = useState(false);
-  const [mealCategory, setMealCategory] = useState("All");
+  const [mealCategory, setMealCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
   const [showItemModal, setShowItemModal] = useState(false);
@@ -59,7 +59,9 @@ const Meals = () => {
             loadedMeals.push({
               id: key,
               name: responseData[key].name,
+              nameFa: responseData[key].nameFa,
               description: responseData[key].description,
+              descriptionFa: responseData[key].descriptionFa,
               price: responseData[key].price,
               img: responseData[key].img,
               category: responseData[key].category,
@@ -189,7 +191,7 @@ const Meals = () => {
   };
 
   const filteredMeals = meals.filter((meal) => {
-    if (mealCategory === "All") return true;
+    if (mealCategory === "all") return true;
     else return meal.category === mealCategory;
   });
 
@@ -198,7 +200,9 @@ const Meals = () => {
       <MealItem
         id={meal.id}
         name={meal.name}
+        nameFa={meal.nameFa}
         description={meal.description}
+        descriptionFa={meal.descriptionFa}
         price={meal.price}
         img={meal.img}
         category={meal.category}

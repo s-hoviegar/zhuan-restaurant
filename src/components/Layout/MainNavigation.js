@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 import AuthContext from "../../store/auth-context";
 import LangContext from "../../store/lang-context";
 import classes from "./MainNavigation.module.css";
 import Logo from "./Logo";
+import { Button } from "react-bootstrap";
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
@@ -19,59 +22,69 @@ const MainNavigation = () => {
     // optional: redirect the user
   };
 
+  const changeLang = () => {
+    langCtx.changeLang();
+  };
+
   return (
-    <header className={classes.header}>
-      <Link to="/">
-        <div className={classes.logo}>
-          <Logo />
-        </div>
-      </Link>
-      <nav>
-        <ul>
-          {!isLoggedIn && (
-            <li>
-              <Link to="/auth">
+    <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
+      <Container className={classes.header}>
+        <Navbar.Brand>
+          <Link to="/">
+            <div className={classes.logo}>
+              <Logo />
+            </div>
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="main-navbar-nav" />
+        <Navbar.Collapse id="main-navbar-nav" className="justify-content-end">
+          <Nav>
+            {!isLoggedIn && (
+              <Nav.Item>
+                <Link to="/auth">
+                  <Button variant="outline-light">
+                    <FormattedMessage
+                      id="mainNavigation.loginBtn"
+                      defaultMessage="Login"
+                    />
+                  </Button>
+                </Link>
+              </Nav.Item>
+            )}
+            {isLoggedIn && (
+              <>
+                <Nav.Item>
+                  <Link to="/profile">
+                    <Button variant="outline-light">
+                      <FormattedMessage
+                        id="mainNavigation.profileBtn"
+                        defaultMessage="Profile"
+                      />
+                    </Button>
+                  </Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Button variant="outline-light" onClick={logoutHandler}>
+                    <FormattedMessage
+                      id="mainNavigation.logoutBtn"
+                      defaultMessage="Logout"
+                    />
+                  </Button>
+                </Nav.Item>
+              </>
+            )}
+            <Nav.Item>
+              <Button variant="outline-light" onClick={changeLang}>
                 <FormattedMessage
-                  id="mainNavigation.loginBtn"
-                  defaultMessage="Login"
+                  id="mainNavigation.changeLangBtn"
+                  defaultMessage="Change Language"
                 />
-              </Link>
-            </li>
-          )}
-          {isLoggedIn && (
-            <li>
-              <Link to="/profile">
-                <FormattedMessage
-                  id="mainNavigation.profileBtn"
-                  defaultMessage="Profile"
-                />
-              </Link>
-            </li>
-          )}
-          {isLoggedIn && (
-            <li>
-              <button onClick={logoutHandler}>
-                <FormattedMessage
-                  id="mainNavigation.logoutBtn"
-                  defaultMessage="Logout"
-                />
-              </button>
-            </li>
-          )}
-          <li>
-            <Form.Select
-              size="sm"
-              aria-label="Select language"
-              value={langCtx.lang}
-              onChange={langCtx.selectLang}
-            >
-              <option value="en">EN</option>
-              <option value="fa">FA</option>
-            </Form.Select>
-          </li>
-        </ul>
-      </nav>
-    </header>
+              </Button>
+            </Nav.Item>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

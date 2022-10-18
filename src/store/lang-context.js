@@ -8,6 +8,7 @@ const LangContext = React.createContext({
   lang: "",
   messages: null,
   selectLang: (lang) => {},
+  changeLang: () => {},
 });
 
 const defaultLangState = {
@@ -30,6 +31,20 @@ const langReducer = (state, action) => {
     }
   }
 
+  if (action.type === "CHANGE") {
+    if (state.lang === "en") {
+      return {
+        lang: "fa",
+        messages: Persian,
+      };
+    } else {
+      return {
+        lang: "en",
+        messages: English,
+      };
+    }
+  }
+
   return defaultLangState;
 };
 
@@ -44,10 +59,16 @@ export const LangContextProvider = (props) => {
     dispatchLangAction({ type: "SELECT", lang: event.target.value });
   };
 
+  const changeLangHandler = (event) => {
+    // console.log(event.target.value);
+    dispatchLangAction({ type: "CHANGE" });
+  };
+
   const langContext = {
     lang: langState.lang,
     messages: langState.messages,
     selectLang: selectLangHandler,
+    changeLang: changeLangHandler,
   };
 
   return (

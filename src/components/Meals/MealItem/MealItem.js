@@ -1,11 +1,11 @@
 import { useContext } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
 import { RiAddBoxFill } from "react-icons/ri";
 import { RiEditBoxFill } from "react-icons/ri";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { FormattedMessage } from "react-intl";
 
 import CartContext from "../../../store/cart-context";
 import AuthContext from "../../../store/auth-context";
@@ -14,6 +14,8 @@ const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
 
+  const intl = useIntl();
+
   // const price = `$${props.price.toFixed(2)}`;
   // const price = props.price;
 
@@ -21,6 +23,7 @@ const MealItem = (props) => {
     cartCtx.addItem({
       id: props.id,
       name: props.name,
+      nameFa: props.nameFa,
       amount: 1,
       price: props.price,
       img: props.img,
@@ -33,7 +36,9 @@ const MealItem = (props) => {
     const editingItem = {
       id: props.id,
       name: props.name,
+      nameFa: props.nameFa,
       description: props.description,
+      descriptionFa: props.descriptionFa,
       price: props.price,
       img: props.img,
       category: props.category,
@@ -46,17 +51,72 @@ const MealItem = (props) => {
     props.deleteItem(props.id);
   };
 
+  let category;
+  switch (props.category) {
+    case "mainCourse":
+      category = (
+        <FormattedMessage
+          id="mealItemForm.mealCategoryMainCourse"
+          defaultMessage="Main Course"
+        />
+      );
+      break;
+    case "appetizer":
+      category = (
+        <FormattedMessage
+          id="mealItemForm.mealCategoryAppetizer"
+          defaultMessage="Appetizer"
+        />
+      );
+      break;
+    case "breakfast":
+      category = (
+        <FormattedMessage
+          id="mealItemForm.mealCategoryBreakfast"
+          defaultMessage="Breakfast"
+        />
+      );
+      break;
+    case "hotDrinks":
+      category = (
+        <FormattedMessage
+          id="mealItemForm.mealCategoryHotDrinks"
+          defaultMessage="Hot Drinks"
+        />
+      );
+      break;
+    case "coldDrinks":
+      category = (
+        <FormattedMessage
+          id="mealItemForm.mealCategoryColdDrinks"
+          defaultMessage="Cold Drinks"
+        />
+      );
+      break;
+    default:
+      category = (
+        <FormattedMessage
+          id="mealItemForm.mealCategoryNone"
+          defaultMessage="Misc"
+        />
+      );
+  }
+
   return (
     <Card>
       <Card.Img variant="top" src={props.img} />
       <Card.Body>
-        <Card.Title>{props.name}</Card.Title>
+        <Card.Title>
+          {intl.locale === "en" ? props.name : props.nameFa}
+        </Card.Title>
         <h6>
           <Badge pill bg="dark" text="light">
-            {props.category}
+            {category}
           </Badge>
         </h6>
-        <Card.Text>{props.description}</Card.Text>
+        <Card.Text>
+          {intl.locale === "en" ? props.description : props.descriptionFa}
+        </Card.Text>
 
         <h6>
           <Button variant="success" size="sm" onClick={addToCartHandler}>
@@ -78,7 +138,9 @@ const MealItem = (props) => {
           </div>
         )}
       </Card.Body>
-      <Card.Footer>{props.price} $</Card.Footer>
+      <Card.Footer>
+        {props.price} {intl.locale === "en" ? "Toman" : "تومان"}
+      </Card.Footer>
     </Card>
   );
 };

@@ -170,7 +170,12 @@ const AuthForm = () => {
         </div>
         <div className={classes.actions}>
           <button disabled={isLoading}>
-            {isLoading && `Sending request...`}
+            {isLoading && (
+              <FormattedMessage
+                id="authForm.sendingRequest"
+                defaultMessage="Sending request..."
+              />
+            )}
             {!isLoading && isLogin && (
               <FormattedMessage id="authForm.login" defaultMessage="Login" />
             )}

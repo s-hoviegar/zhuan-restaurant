@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { FormattedMessage, useIntl } from "react-intl";
 
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
@@ -9,7 +10,11 @@ const Cart = (props) => {
   const [isCheckout, setIsCheckout] = useState(false);
   const cartCtx = useContext(CartContext);
 
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const intl = useIntl();
+
+  const totalAmount = `${cartCtx.totalAmount.toFixed(0)} ${
+    intl.locale === "en" ? "Toman" : "تومان"
+  }`;
   const hasItems = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = (id) => {
@@ -34,6 +39,7 @@ const Cart = (props) => {
         <CartItem
           key={item.id}
           name={item.name}
+          nameFa={item.nameFa}
           amount={item.amount}
           price={item.price}
           onRemove={cartItemRemoveHandler.bind(null, item.id)}
@@ -45,13 +51,18 @@ const Cart = (props) => {
 
   const checkout = (
     <>
-      <p>Tell waiter/waitress your order...</p>
+      <p>
+        <FormattedMessage
+          id="cart.orderText"
+          defaultMessage="Tell waiter/waitress your order..."
+        />
+      </p>
       <div className={classes.actions}>
         <Button variant="outline-dark" onClick={submitOrderHandler}>
-          Clear all
+          <FormattedMessage id="cart.clearAll" defaultMessage="Clear all" />
         </Button>
         <Button variant="dark" onClick={props.onClose}>
-          Ok
+          <FormattedMessage id="cart.ok" defaultMessage="Ok!" />
         </Button>
       </div>
     </>
@@ -60,10 +71,10 @@ const Cart = (props) => {
   const modalActions = (
     <div className={classes.actions}>
       <Button variant="outline-dark" onClick={props.onClose}>
-        Close
+        <FormattedMessage id="cart.close" defaultMessage="Close" />
       </Button>
       <Button variant="dark" onClick={orderHandler}>
-        Order
+        <FormattedMessage id="cart.order" defaultMessage="Order" />
       </Button>
     </div>
   );
@@ -73,12 +84,15 @@ const Cart = (props) => {
     cartModalContent = (
       <>
         <p>
-          There is no items in your order list. Try adding some items to see
-          them here!
+          <FormattedMessage
+            id="cart.noItemInOrderList"
+            defaultMessage="There is no items in your order list. Try adding some items to see
+          them here!"
+          />
         </p>
         <div className={classes.actions}>
           <Button variant="dark" onClick={props.onClose}>
-            Ok
+            <FormattedMessage id="cart.ok" defaultMessage="Ok!" />
           </Button>
         </div>
       </>
@@ -88,7 +102,12 @@ const Cart = (props) => {
       <React.Fragment>
         {cartItems}
         <div className={classes.total}>
-          <span>Total Amount</span>
+          <span>
+            <FormattedMessage
+              id="cart.totalAmount"
+              defaultMessage="Total Amount"
+            />
+          </span>
           <span>{totalAmount}</span>
         </div>
         {isCheckout && checkout}
