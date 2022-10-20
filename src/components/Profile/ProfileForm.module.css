@@ -23,6 +23,7 @@
   border: 1px solid #212529;
   padding: 0.25rem;
   background-color: #ececec;
+  direction: ltr;
 }
 
 .action {

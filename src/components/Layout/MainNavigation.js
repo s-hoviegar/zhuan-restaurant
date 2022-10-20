@@ -41,6 +41,16 @@ const MainNavigation = () => {
         <Navbar.Toggle aria-controls="main-navbar-nav" />
         <Navbar.Collapse id="main-navbar-nav" className="justify-content-end">
           <Nav>
+            <Nav.Item>
+              <Link to="/">
+                <Button variant="outline-light">
+                  <FormattedMessage
+                    id="mainNavigation.menuBtn"
+                    defaultMessage="Restaurant Menu"
+                  />
+                </Button>
+              </Link>
+            </Nav.Item>
             {!isLoggedIn && (
               <Nav.Item>
                 <Link to="/auth">

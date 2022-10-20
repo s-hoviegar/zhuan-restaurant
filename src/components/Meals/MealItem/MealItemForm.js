@@ -262,6 +262,94 @@ const MealItemForm = (props) => {
     </FormattedMessage>
   );
 
+  const englishTab = (
+    <Tab
+      eventKey="en"
+      title={intl.locale === "en" ? "English menu" : "منوی انگلیسی"}
+    >
+      <Form.Group className="mb-3" controlId="itemForm.mealName">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealName"
+            defaultMessage="Meal name"
+          />
+        </Form.Label>
+        <FormattedMessage
+          id="mealItemForm.mealNamePlaceHolder"
+          defaultMessage="Enter a name for the new meal item."
+        >
+          {(msg) => (
+            <Form.Control
+              type="text"
+              placeholder={msg}
+              ref={nameInputRef}
+              style={{ direction: "ltr" }}
+              autoFocus
+            />
+          )}
+        </FormattedMessage>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="itemForm.mealDescription">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealDescription"
+            defaultMessage="Description"
+          />
+        </Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          ref={descriptionInputRef}
+          style={{ direction: "ltr" }}
+        />
+      </Form.Group>
+    </Tab>
+  );
+
+  const persianTab = (
+    <Tab
+      eventKey="fa"
+      title={intl.locale === "en" ? "Persian menu" : "منوی فارسی"}
+    >
+      <Form.Group className="mb-3" controlId="itemForm.mealNameFa">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealNameFa"
+            defaultMessage="Meal name (Persian)"
+          />
+        </Form.Label>
+        <FormattedMessage
+          id="mealItemForm.mealNamePlaceHolderFa"
+          defaultMessage="Enter a name for the new meal item."
+        >
+          {(msg) => (
+            <Form.Control
+              type="text"
+              placeholder={msg}
+              ref={faNameInputRef}
+              style={{ direction: "rtl" }}
+              autoFocus
+            />
+          )}
+        </FormattedMessage>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="itemForm.mealDescriptionFa">
+        <Form.Label>
+          <FormattedMessage
+            id="mealItemForm.mealDescriptionFa"
+            defaultMessage="Description"
+          />
+        </Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={3}
+          ref={faDescriptionInputRef}
+          style={{ direction: "rtl" }}
+        />
+      </Form.Group>
+    </Tab>
+  );
+
   return (
     <Form>
       <Tabs
@@ -270,89 +358,8 @@ const MealItemForm = (props) => {
         className="mb-3"
         justify
       >
-        <Tab
-          eventKey="en"
-          title={intl.locale === "en" ? "English menu" : "منوی انگلیسی"}
-        >
-          <Form.Group className="mb-3" controlId="itemForm.mealName">
-            <Form.Label>
-              <FormattedMessage
-                id="mealItemForm.mealName"
-                defaultMessage="Meal name"
-              />
-            </Form.Label>
-            <FormattedMessage
-              id="mealItemForm.mealNamePlaceHolder"
-              defaultMessage="Enter a name for the new meal item."
-            >
-              {(msg) => (
-                <Form.Control
-                  type="text"
-                  placeholder={msg}
-                  ref={nameInputRef}
-                  style={{ direction: "ltr" }}
-                  autoFocus
-                />
-              )}
-            </FormattedMessage>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="itemForm.mealDescription">
-            <Form.Label>
-              <FormattedMessage
-                id="mealItemForm.mealDescription"
-                defaultMessage="Description"
-              />
-            </Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              ref={descriptionInputRef}
-              style={{ direction: "ltr" }}
-            />
-          </Form.Group>
-        </Tab>
-
-        <Tab
-          eventKey="fa"
-          title={intl.locale === "en" ? "Persian menu" : "منوی فارسی"}
-        >
-          <Form.Group className="mb-3" controlId="itemForm.mealNameFa">
-            <Form.Label>
-              <FormattedMessage
-                id="mealItemForm.mealNameFa"
-                defaultMessage="Meal name (Persian)"
-              />
-            </Form.Label>
-            <FormattedMessage
-              id="mealItemForm.mealNamePlaceHolderFa"
-              defaultMessage="Enter a name for the new meal item."
-            >
-              {(msg) => (
-                <Form.Control
-                  type="text"
-                  placeholder={msg}
-                  ref={faNameInputRef}
-                  style={{ direction: "rtl" }}
-                  autoFocus
-                />
-              )}
-            </FormattedMessage>
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="itemForm.mealDescriptionFa">
-            <Form.Label>
-              <FormattedMessage
-                id="mealItemForm.mealDescriptionFa"
-                defaultMessage="Description"
-              />
-            </Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={3}
-              ref={faDescriptionInputRef}
-              style={{ direction: "rtl" }}
-            />
-          </Form.Group>
-        </Tab>
+        {intl.locale === "en" ? englishTab : persianTab}
+        {intl.locale === "en" ? persianTab : englishTab}
       </Tabs>
 
       <InputGroup className="mb-3" style={{ direction: "ltr" }}>
