@@ -4,12 +4,14 @@ import { FormattedMessage } from "react-intl";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
+import { MdOutlineChangeCircle } from "react-icons/md";
 
 import AuthContext from "../../store/auth-context";
 import LangContext from "../../store/lang-context";
-import classes from "./MainNavigation.module.css";
 import Logo from "./Logo";
-import { Button } from "react-bootstrap";
+
+import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
@@ -75,10 +77,12 @@ const MainNavigation = () => {
             )}
             <Nav.Item>
               <Button variant="outline-light" onClick={changeLang}>
+                <MdOutlineChangeCircle size={23} />
                 <FormattedMessage
                   id="mainNavigation.changeLangBtn"
-                  defaultMessage="Change Language"
+                  defaultMessage=" Lang: "
                 />
+                {langCtx.lang.toUpperCase()}
               </Button>
             </Nav.Item>
           </Nav>

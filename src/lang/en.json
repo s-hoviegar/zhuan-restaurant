@@ -3,7 +3,7 @@
   "mainNavigation.loginBtn": "Login",
   "mainNavigation.profileBtn": "Profile",
   "mainNavigation.logoutBtn": "Logout",
-  "mainNavigation.changeLangBtn": "Change Language",
+  "mainNavigation.changeLangBtn": " Lang: ",
   "startingPage.orderList": "Your order list",
   "startingPage.welcomeTitle": "Welcome to Zhuan Restaurant!",
   "startingPage.welcomeBody": "Please choose your favourite meals and add them in your order list.",

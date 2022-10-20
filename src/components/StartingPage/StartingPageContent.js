@@ -22,7 +22,7 @@ const StartingPageContent = () => {
     <>
       {
         <Modal show={showCart} onHide={hideCartModal} centered>
-          <Modal.Header closeButton>
+          <Modal.Header className={classes.header} closeButton>
             <Modal.Title>
               <FormattedMessage
                 id="startingPage.orderList"

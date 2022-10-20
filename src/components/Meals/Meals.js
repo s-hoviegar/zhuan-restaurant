@@ -217,7 +217,7 @@ const Meals = () => {
       <MealCategories changeCategory={onChangeMealCategoryHandler} />
       <section className={mealsClasses}>
         <Modal show={showItemModal} onHide={onCloseModal} centered>
-          <Modal.Header closeButton>
+          <Modal.Header className={classes.header} closeButton>
             <Modal.Title>
               {editingItem !== null ? (
                 <FormattedMessage id="meals.edit" defaultMessage="Edit" />

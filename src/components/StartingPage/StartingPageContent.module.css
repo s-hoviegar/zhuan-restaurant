@@ -6,3 +6,7 @@
 .starting h1 {
   font-size: 5rem;
 }
+
+.header button {
+  margin: 0px !important;
+}
