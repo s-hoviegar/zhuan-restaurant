@@ -139,7 +139,8 @@ const MealItem = (props) => {
         )}
       </Card.Body>
       <Card.Footer>
-        {props.price} {intl.locale === "en" ? "Toman" : "تومان"}
+        {intl.formatNumber(props.price)}{" "}
+        {intl.locale === "en" ? "Toman" : "تومان"}
       </Card.Footer>
     </Card>
   );

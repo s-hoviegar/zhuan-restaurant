@@ -16,20 +16,24 @@
   width: 10rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .price {
+  flex-shrink: 0;
   font-weight: bold;
   color: #3a5a40;
+  margin-right: 0.25rem;
 }
 
 .amount {
+  flex-shrink: 0;
   font-weight: bold;
   border: 1px solid #ccc;
   padding: 0.25rem 0.75rem;
   border-radius: 6px;
   color: #3a5a40;
+  direction: ltr;
 }
 
 .actions {

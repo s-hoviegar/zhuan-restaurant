@@ -12,9 +12,7 @@ const Cart = (props) => {
 
   const intl = useIntl();
 
-  const totalAmount = `${cartCtx.totalAmount.toFixed(0)} ${
-    intl.locale === "en" ? "Toman" : "تومان"
-  }`;
+  const totalAmount = cartCtx.totalAmount.toFixed(0);
   const hasItems = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = (id) => {
@@ -108,7 +106,10 @@ const Cart = (props) => {
               defaultMessage="Total Amount"
             />
           </span>
-          <span>{totalAmount}</span>
+          <span>
+            {intl.formatNumber(totalAmount)}{" "}
+            {intl.locale === "en" ? "Toman" : "تومان"}
+          </span>
         </div>
         {isCheckout && checkout}
         {!isCheckout && modalActions}
