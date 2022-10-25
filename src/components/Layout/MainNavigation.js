@@ -51,6 +51,16 @@ const MainNavigation = () => {
                 </Button>
               </Link>
             </Nav.Item>
+            <Nav.Item>
+              <Link to="/about">
+                <Button variant="outline-light">
+                  <FormattedMessage
+                    id="mainNavigation.aboutBtn"
+                    defaultMessage="About Us"
+                  />
+                </Button>
+              </Link>
+            </Nav.Item>
             {!isLoggedIn && (
               <Nav.Item>
                 <Link to="/auth">

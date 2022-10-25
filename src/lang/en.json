@@ -1,6 +1,7 @@
 {
   "lang": "en",
   "mainNavigation.menuBtn": "Restaurant Menu",
+  "mainNavigation.aboutBtn": "About Us",
   "mainNavigation.loginBtn": "Login",
   "mainNavigation.profileBtn": "Profile",
   "mainNavigation.logoutBtn": "Logout",
@@ -64,5 +65,12 @@
   "footer.pages": "Pages",
   "footer.menuLink": "Restaurant Menu",
   "footer.profileLink": "User Profile",
-  "footer.aboutUsLink": "About Us"
+  "footer.aboutUsLink": "About Us",
+  "about.map": "Map",
+  "about.address": "Address",
+  "about.addressText": "Iran, Tehran, Azadegan South Hwy, Firouz Bahram Rd.",
+  "about.contactUs": "Contact Us",
+  "about.phone": "Phone: +989388768674",
+  "about.instagram": "Instagram: @zhuan_caferestaurant",
+  "about.email": "Email: Tirazhe.Hoseini+Zhuan@gmail.com"
 }

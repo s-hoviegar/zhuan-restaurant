@@ -3,7 +3,7 @@ import { useIntl } from "react-intl";
 
 import classes from "./MealCategories.module.css";
 
-const images = require.context("../../../assets", true);
+const images = require.context("../../../assets/Categories", true);
 
 const MEAL_CATEGORIES = [
   {

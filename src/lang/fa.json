@@ -1,6 +1,7 @@
 {
   "lang": "fa",
   "mainNavigation.menuBtn": "منوی رستوران",
+  "mainNavigation.aboutBtn": "درباره ما",
   "mainNavigation.loginBtn": "ورود",
   "mainNavigation.profileBtn": "پروفایل",
   "mainNavigation.logoutBtn": "خروج",
@@ -64,5 +65,12 @@
   "footer.pages": "صفحات",
   "footer.menuLink": "منوی رستوران",
   "footer.profileLink": "پروفایل کاربری",
-  "footer.aboutUsLink": "درباره ما"
+  "footer.aboutUsLink": "درباره ما",
+  "about.map": "نقشه",
+  "about.address": "آدرس",
+  "about.addressText": "ایران، تهران، آزادگان جنوب، جاده فيروز بهرام",
+  "about.contactUs": "ارتباط با ما",
+  "about.phone": "تلفن: ۹۸۹۳۸۸۷۶۸۶۷۴+",
+  "about.instagram": "اینستاگرام: zhuan_caferestaurant@",
+  "about.email": "ایمیل: Tirazhe.Hoseini+Zhuan@gmail.com"
 }
