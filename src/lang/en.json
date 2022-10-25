@@ -57,5 +57,12 @@
   "cart.close": "Close",
   "cart.order": "Order",
   "cart.noItemInOrderList": "There is no items in your order list. Try adding some items to see them here.",
-  "cart.totalAmount": "Total Amount"
+  "cart.totalAmount": "Total Amount",
+  "footer.address": "Address",
+  "footer.addressText": "Iran, Tehran, Azadegan South Hwy, Firouz Bahram Rd.",
+  "footer.contactUs": "Contact Us",
+  "footer.pages": "Pages",
+  "footer.menuLink": "Restaurant Menu",
+  "footer.profileLink": "User Profile",
+  "footer.aboutUsLink": "About Us"
 }

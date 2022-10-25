@@ -30,9 +30,8 @@ const Meals = () => {
   const [editingItem, setEditingItem] = useState(null);
 
   const authCtx = useContext(AuthContext);
-  const isVerified =
-    authCtx.isVerified === "true" || authCtx.isVerified === true;
-  const isAdmin = authCtx.isAdmin === "true" || authCtx.isAdmin === true;
+  const isVerified = authCtx.isVerified;
+  const isAdmin = authCtx.isAdmin;
 
   let loadingMeals = [];
 

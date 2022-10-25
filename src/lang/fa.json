@@ -1,6 +1,6 @@
 {
   "lang": "fa",
-  "mainNavigation.menuBtn": "منوری رستوران",
+  "mainNavigation.menuBtn": "منوی رستوران",
   "mainNavigation.loginBtn": "ورود",
   "mainNavigation.profileBtn": "پروفایل",
   "mainNavigation.logoutBtn": "خروج",
@@ -57,5 +57,12 @@
   "cart.close": "بستن",
   "cart.order": "سفارش",
   "cart.noItemInOrderList": "هیچ آیتمی در لیست سفارش شما وجود ندارد؛ جهت سفارش، چند آیتم به لیست سفارش خود اضافه کنید.",
-  "cart.totalAmount": "مبلغ کل"
+  "cart.totalAmount": "مبلغ کل",
+  "footer.address": "آدرس",
+  "footer.addressText": "ایران، تهران، آزادگان جنوب، جاده فيروز بهرام",
+  "footer.contactUs": "ارتباط با ما",
+  "footer.pages": "صفحات",
+  "footer.menuLink": "منوی رستوران",
+  "footer.profileLink": "پروفایل کاربری",
+  "footer.aboutUsLink": "درباره ما"
 }

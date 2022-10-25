@@ -2,6 +2,9 @@
   width: 100%;
   background-color: #344E41;
   border-radius: 5px;
+  overflow: "hidden";
+  min-width: 0;
+  /* needed for Firefox */
 }
 
 .header button {

@@ -12,8 +12,8 @@ const LangContext = React.createContext({
 });
 
 const defaultLangState = {
-  lang: "en",
-  messages: English,
+  lang: "fa",
+  messages: Persian,
 };
 
 const langReducer = (state, action) => {

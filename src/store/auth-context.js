@@ -23,9 +23,12 @@ const calculateRemainingTime = (expirationTime) => {
 const retrieveStoredToken = () => {
   const storedToken = localStorage.getItem("token");
   const storedExpirationDate = localStorage.getItem("expirationTime");
-  const isEmailVerified = localStorage.getItem("isEmailVerified");
-  const isAdmin = localStorage.getItem("isAdmin");
-
+  const isEmailVerified =
+    localStorage.getItem("isEmailVerified") === "true" ||
+    localStorage.getItem("isEmailVerified") === true;
+  const isAdmin =
+    localStorage.getItem("isAdmin") === "true" ||
+    localStorage.getItem("isAdmin") === true;
   const remainingTime = calculateRemainingTime(storedExpirationDate);
 
   if (remainingTime <= 3600) {

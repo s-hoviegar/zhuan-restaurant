@@ -102,6 +102,20 @@ const MealItem = (props) => {
       );
   }
 
+  let editBtns = null;
+  if (authCtx.isLoggedIn && authCtx.isAdmin && authCtx.isVerified) {
+    editBtns = (
+      <div>
+        <Button variant="dark" size="sm" onClick={onEditHandler}>
+          <RiEditBoxFill />
+        </Button>{" "}
+        <Button variant="dark" size="sm" onClick={onDeleteHandler}>
+          <RiDeleteBin5Fill />
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <Card>
       <Card.Img variant="top" src={props.img} />
@@ -127,16 +141,7 @@ const MealItem = (props) => {
             />
           </Button>
         </h6>
-        {authCtx.isLoggedIn && authCtx.isAdmin && authCtx.isVerified && (
-          <div>
-            <Button variant="dark" size="sm" onClick={onEditHandler}>
-              <RiEditBoxFill />
-            </Button>{" "}
-            <Button variant="dark" size="sm" onClick={onDeleteHandler}>
-              <RiDeleteBin5Fill />
-            </Button>
-          </div>
-        )}
+        {editBtns}
       </Card.Body>
       <Card.Footer>
         {intl.formatNumber(props.price)}{" "}

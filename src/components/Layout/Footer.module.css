@@ -1,0 +1,33 @@
+.footer {
+  width: 100%;
+  background-color: #212529;
+  padding: 0 2.5rem 1rem 1rem;
+  margin: 0 auto 0 auto;
+  overflow: hidden;
+  /* NEW */
+  min-width: 0;
+  /* NEW; needed for Firefox */
+}
+
+.title {
+  display: inline-block;
+  margin: 2rem 3rem 0rem 3rem;
+  color: darkgrey;
+  border-bottom: 2px solid #344e41;
+  padding-bottom: 3px;
+}
+
+.text {
+  margin: 0.5rem 3rem;
+  color: darkgrey;
+}
+
+.text a {
+  color: darkgrey;
+  text-decoration: none;
+}
+
+.text a:hover {
+  color: #588157;
+  text-decoration: none;
+}
