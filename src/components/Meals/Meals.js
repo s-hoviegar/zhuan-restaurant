@@ -241,7 +241,7 @@ const Meals = () => {
           onHide={onCloseRemoveItemModal}
           centered
         >
-          <Modal.Header closeButton>
+          <Modal.Header className={classes.header} closeButton>
             <Modal.Title>
               <FormattedMessage
                 id="meals.remove"
