@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Vazirmatn-Regular';
+  src: local('Vazirmatn-Regular'), url(./fonts/Vazirmatn-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Vazirmatn-Black';
+  src: local('Vazirmatn-Black'), url(./fonts/Vazirmatn-Black.ttf) format('truetype');
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400;700&display=swap');
 
 * {
@@ -5,7 +15,7 @@
 }
 
 body {
-  font-family: 'Open Sans', 'Lato', sans-serif;
+  font-family: 'Vazirmatn-Regular', 'Open Sans', 'Lato', sans-serif;
   margin: 0;
 }
 
@@ -15,5 +25,5 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Vazirmatn-Black', 'Lato', sans-serif;
 }

@@ -2,11 +2,14 @@ import { useContext, useEffect, useState } from "react";
 
 import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
+import LangCtx from "../../store/lang-context";
+
 import classes from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const cartCtx = useContext(CartContext);
+  const langCtx = useContext(LangCtx);
 
   // const items = [];
   const { items } = cartCtx;
@@ -15,7 +18,9 @@ const HeaderCartButton = (props) => {
     return curNumber + item.amount;
   }, 0);
 
-  const btnClasses = `${classes.float} ${btnIsHighlighted ? classes.bump : ""}`;
+  const btnClasses = `${classes.float} ${
+    btnIsHighlighted ? classes.bump : ""
+  } ${langCtx.lang === "en" ? classes["float-right"] : classes["float-left"]}`;
 
   useEffect(() => {
     if (items.length === 0) {

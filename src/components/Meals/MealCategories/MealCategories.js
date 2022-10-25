@@ -30,6 +30,10 @@ const MEAL_CATEGORIES = [
     id: "coldDrinks",
     img: "Cold_Drinks",
   },
+  {
+    id: "misc",
+    img: "Misc",
+  },
 ];
 
 const MealCategories = (props) => {
