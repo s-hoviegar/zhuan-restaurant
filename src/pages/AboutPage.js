@@ -6,7 +6,6 @@ import { FormattedMessage } from "react-intl";
 
 import Map from "../components/Map/Map";
 
-import image from "../assets/map.jpg";
 import classes from "./About.module.css";
 
 const images = require.context("../assets/Carousel", true);
