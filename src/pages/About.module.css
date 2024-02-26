@@ -2,3 +2,14 @@
   text-decoration: none;
   color: #212529;
 }
+
+.carousel {
+  width: 80%;
+  margin: auto;
+}
+
+@media screen and (max-width: 540px) {
+  .carousel {
+    width: 95%;
+  }
+}

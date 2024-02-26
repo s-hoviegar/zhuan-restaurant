@@ -51,23 +51,26 @@ const CAROUSEL = [
 const AboutPage = () => {
   return (
     <>
-      <Carousel>
-        {CAROUSEL.map((item) => {
-          return (
-            <Carousel.Item key={item.id}>
-              <img
-                className="d-block w-100"
-                src={images(`./${item.id}.jpg`).default}
-                alt={item.label}
-              />
-              <Carousel.Caption>
-                <h3>{""}</h3>
-                <p>{""}</p>
-              </Carousel.Caption>
-            </Carousel.Item>
-          );
-        })}
-      </Carousel>
+      <div className={classes.carousel}>
+        <Carousel>
+          {CAROUSEL.map((item) => {
+            return (
+              <Carousel.Item key={item.id}>
+                <img
+                  className="d-block w-100"
+                  src={images(`./${item.id}.jpg`).default}
+                  alt={item.label}
+                />
+                <Carousel.Caption>
+                  <h3>{""}</h3>
+                  <p>{""}</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+      </div>
+
       <Container className={classes.about}>
         <Row xs={1} md={2} className="g-4">
           <Col md={8}>
